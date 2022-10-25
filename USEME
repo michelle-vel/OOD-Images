@@ -1,0 +1,87 @@
+How to use our Image Processor :) You have 3 options!
+
+    [Available Commands]
+
+    load image-path image-name
+    red-component image-name dest-image-name
+    blue-component image-name dest-image-name
+    green-component image-name dest-image-name
+    value image-name dest-image-name
+    luma image-name dest-image-name
+    sepia image-name dest-image-name
+    greyscale image-name dest-image-name
+    intensity image-name dest-image-name
+    horizontal-flip image-name dest-image-name
+    vertical-flip image-name dest-image-name
+    brighten increment image-name dest-image-name
+    darken increment image-name dest-image-name
+    sepia image-name dest-image-name
+    greyscale image-name dest-image-name
+    sharpen image-name dest-image-name
+    blur image-name dest-image-name
+    save image-path image-name
+    quit to quit program
+
+1. Text Scripting
+
+     - Create a new run config. with an empty command line argument
+     - Run configuration
+     - See intro message with possible commands
+     - Use keyboard to type commands accordingly in Run Window and hit enter.
+     - Type 'quit' to quit program.
+
+2. JAR File/File in Command-Line Argument
+
+     - Parse all commands into a text file ending with "quit".
+       Example (store the following in a file.txt)
+       load res/33grid.bmp grid
+       vertical-flip grid verticalgrid
+       horizontal-flip grid horizontalgrid
+       red-component grid redgrid
+       green-component grid greengrid
+       blue-component grid bluegrid
+       brighten 50 grid brightgrid
+       darken 50 grid darkgrid
+       value grid valuegrid
+       intensity grid intensitygrid
+       blur grid blurgrid
+       sharpen grid sharpengrid
+       luma grid lumagrid
+       greyscale grid greyscalegrid
+       sepia grid sepiagrid
+       save res/sharpengrid.bmp sharpengrid
+       quit
+
+     - Create a new run config. with the following arguments: "-file FILE-PATH.txt"
+       (* If file is in project, use relative path. Use absolute path for foreign text files)
+       Example: "-file CommandsBMP.txt"
+     - Run configuration.
+
+     3. Run GUI to interactively process images with buttons and simultaneously see its RGB
+        intensity values on a histogram.
+
+      GUI conditions:
+      - Must have a file imported first, before applying any transformations
+      - The histogram will automatically update for each color transformation
+
+      To start:
+      - Run the ViewProgram class OR
+      - Default option: double click on the jar file to run.
+
+      - The GUI opens with no image loaded and displays all available commands as buttons
+        in the bottom half of the scrollable window.
+      - To load: click the "Open a file" button and navigate to a valid image (.png, .ppm, .jpg, .bmp)
+        on your desktop.
+      - The image will appear in the top half of the GUI in an image window. It will be scrollable
+        if the image larger than the default window size.
+      - You can now click on any of the available transformation buttons on the bottom panel.
+        How to use each operation >>>>
+      - To brighten or darken, first input an increment in the empty window to the left, then
+        click "brighten an image" or "darken an image".
+      - To flip, get rgb components, greyscale, intensity, value, luma, blur sepia, or sharpen
+        an image, click the respective buttons after an image has been loaded.
+      - Multiple operations can be applied to an image. Image is modified after each op.
+      - To apply operation on original image, reload the image with "Open a file".
+      - The picture being displayed will update for each transformation
+      - The histogram will update accordingly with the RGB and intensity (grey) values.
+      - To save: press the "Save a file" button and navigate to a valid file path.
